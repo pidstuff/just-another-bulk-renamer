@@ -20,8 +20,9 @@ class Module:
             'format': {
                 'OldName Text Number': 0,
                 'Number Text OldName': 1,
-                'Text Number': 2,
-                'Number Text': 3
+                'Text Number OldName': 2,
+                'Text Number': 3,
+                'Number Text': 4
             },
             'text': 'Text which serves as the label for the file'
         }
@@ -131,6 +132,8 @@ class Module:
             return [''.join([f, text, '%0{0}d'.format(leading_zeros) % (start + i)]) for i, f in enumerate(files)]
         elif format == self.options['format']['Number Text OldName']:
             return [''.join(['%0{0}d'.format(leading_zeros) % (start + i), text, f]) for i, f in enumerate(files)]
+        elif format == self.options['format']['Text Number OldName']:
+            return [''.join([text, '%0{0}d'.format(leading_zeros) % (start + i), f]) for i, f in enumerate(files)]
         elif format == self.options['format']['Text Number']:
             return [''.join([text, '%0{0}d'.format(leading_zeros) % (start + i)]) for i, f in enumerate(files)]
         return [''.join(['%0{0}d'.format(leading_zeros) % (start + i), text]) for i, f in enumerate(files)]
