@@ -102,19 +102,20 @@ class Module:
         for f in files:
             if position > len(f):
                 newfilenames.append(f)
+                continue
 
             if from_ == self.options['from']['From the Left']:
-                filename = ''.join(
+                filename = ''.join([
                     f[0:position],
                     insert,
                     f[position:len(f)]
-                )
+                ])
             else:
-                filename = ''.join(
+                filename = ''.join([
                     f[0:len(f)-position],
                     insert,
                     f[len(f)-position:len(f)]
-                )
+                ])
             newfilenames.append(filename)
         return newfilenames
 
